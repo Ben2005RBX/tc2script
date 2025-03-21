@@ -3,7 +3,7 @@ const cheerio = require("cheerio");
 const cron = require("node-cron");
 
 const url = "https://create.roblox.com/docs/en-us/release-notes/release-notes-663";
-const webhookURL = secret; // Replace this with your actual webhook URL
+const webhookURL = process.env.URL; // Replace this with your actual webhook URL
 
 async function scrapeReleaseNote() {
     try {
