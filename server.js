@@ -1,6 +1,9 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const cron = require("node-cron");
+const express = require('express')
+const app = express()
+const port = 4000;
 
 const url = "https://create.roblox.com/docs/en-us/release-notes/release-notes-663";
 const webhookURL = process.env.URL; // Replace with actual webhook URL
@@ -52,6 +55,14 @@ async function sendToDiscord(message) {
         console.error("Error sending to Discord:", error);
     }
 }
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 
 cron.schedule("0 */2 * * *", () => {
     console.log("Checking for updates...");
