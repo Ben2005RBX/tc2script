@@ -27,11 +27,11 @@ async function scrapeReleaseNote() {
             console.log("State:", stateInfo);
 
             if (lastState === "Pending" && stateInfo === "Live") {
-                await sendToDiscord(`${bugFixText} ${stateInfo} <@472385006665465857>`);
+                await sendToDiscord(`YESSSS <@472385006665465857>`);
                 console.log("State is 'Live', stopping further checks.");
                 process.exit(0); // Stop execution
             } else {
-				 await sendToDiscord(`${bugFixText} ${stateInfo} are we there yet?`);
+				 await sendToDiscord(`no`);
                 console.log("No state change to 'Live' detected.");
             }
 
@@ -53,8 +53,7 @@ async function sendToDiscord(message) {
     }
 }
 
-// Schedule to run every 4 hours
-cron.schedule("0 */4 * * *", () => {
+cron.schedule("0 */2 * * *", () => {
     console.log("Checking for updates...");
     scrapeReleaseNote();
 });
